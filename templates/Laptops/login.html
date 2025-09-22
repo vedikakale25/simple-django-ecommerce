@@ -1,0 +1,37 @@
+{% extends 'Laptops/layout.html' %}
+
+ {% block title %}
+    <title>Login Page</title>
+  {% endblock %}
+
+{% block content %}
+
+<h1 style="text-align:center; margin-top:10px; ">Login</h1>
+<!-------------- Login Form---------->
+<form method="post" style="border:2px solid; width:50%; margin-left:25%; padding:5%; margin-top:3%;">
+    <!----CSRF token stops unauthorized form submissions from other sites.--->
+    {% csrf_token %}
+   <!---------Username field----->
+  <label>Enter Username</label>
+  <input type="text" name="uname" style="margin-left:5%; " class="btn btn-info"><br><br>
+    <!---------Password field----->
+  <label>Enter Password</label>
+  <input type="password" name="pw" style="margin-left:6%; " class="btn btn-info"><br><br>
+
+    <!------------- Entered Wrong Credential Message  Displayed---------->
+  {% if messages %}
+    {% for msg in messages %}
+      <p style="margin-left:3%; color:red;">{{msg}}</p>
+    {% endfor %}
+  {% else %}
+
+  <br>
+<!---------- Login button for submit Credentials------------>
+  {% endif %}
+  <input type="submit" value="Login" class="btn btn-success">
+    </form>
+
+<br><br><br><br><br>
+<br>
+
+{% endblock %}

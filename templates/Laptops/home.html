@@ -1,0 +1,39 @@
+{% extends 'Laptops/layout.html' %}
+
+ {% block title %}
+    <title>Home Page</title>
+  {% endblock %}
+
+{% block content %}
+
+<h1 style="text-align:center; margin-top:10px;  ">Show Laptops</h1>
+<!-------------- Table for Showing all Laptops details ------------>
+<table class="table table-dark" style="width:82%; margin-left:8%; margin-top:4%;">
+<!------------- Colunms of Table------------->
+    <tr>
+        <th>ID</th>
+        <th>COMPANY</th>
+        <th>MODEL</th>
+        <th>RAM</th>
+        <th>ROM</th>
+        <th>PRICE</th>
+        <th>UPDATE</th>
+        <th>DELETE</th>
+    </tr>
+<!------------- Display all data in table rows--------------->
+    {% for lap in laptop %}
+    <tr class="table table-primary">
+        <td>{{lap.id}}</td>
+        <td>{{lap.company}}</td>
+        <td>{{lap.variant}}</td>
+        <td>{{lap.ram}}</td>
+        <td>{{lap.rom}}</td>
+        <td>{{lap.price}}</td>
+        <td><a href="/lapkart/update/{{lap.id}}/"><button class="btn btn-warning">Update</button></a> </td>
+        <td><a href="/lapkart/delete/{{lap.id}}/"><button class="btn btn-danger">delete</button></a> </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="/lapkart/add/"><button style="margin-left:45%; " class="btn btn-primary">Add Laptops</button></a>
+{% endblock %}
